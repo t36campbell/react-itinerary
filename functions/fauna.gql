@@ -1,0 +1,21 @@
+type Event {
+    name: String!
+    at: String
+    description: String
+    url: String
+    trip: Trip!
+}
+type Trip {
+    name: String!
+    events: [Event!] @relation
+    user: User @relation
+}
+type User {
+    name: String!
+    trips: [Trip!] @relation
+}
+type Query {
+    users: User
+    allTrips: [Trip!]!
+    allEvents: [Event!]!
+}
