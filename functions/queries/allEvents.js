@@ -1,4 +1,4 @@
-export const allEvents = `
+const allEvents = `
 query{
     allEvents {
         data {
@@ -14,3 +14,5 @@ query{
       }
     }
 }`
+
+module.exports = { allEvents }

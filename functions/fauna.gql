@@ -15,7 +15,7 @@ type User {
     trips: [Trip!] @relation
 }
 type Query {
-    users: User
+    allUsers: [User!]!
     allTrips: [Trip!]!
     allEvents: [Event!]!
 }

@@ -1,5 +1,5 @@
-export const createTrip = `
-mutation($name: String!, $user: INT!) {
+const createTrip = `
+mutation($name: String!, $user: ID!) {
 	createTrip( data: { name: $name
         user : {
             connect: $user
@@ -13,3 +13,5 @@ mutation($name: String!, $user: INT!) {
         }
 	}
 }`
+
+module.exports = { createTrip }

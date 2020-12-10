@@ -1,5 +1,5 @@
-export const createEvent = `
-mutation($name: String!, $at: String, $description: String, $url: String, $trip: INT ) {
+const createEvent = `
+mutation($name: String!, $at: String, $description: String, $url: String, $trip: ID) {
 	createEvent( data: { name: $name, at: $at, description: $description, url: $url,
         trip: {
         connect: $trip
@@ -20,3 +20,5 @@ mutation($name: String!, $at: String, $description: String, $url: String, $trip:
         }
 	}
 }`
+
+module.exports = { createEvent }

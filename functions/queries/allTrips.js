@@ -1,4 +1,4 @@
-export const allTrips = `
+const allTrips = `
 query{
     allTrips {
       data {
@@ -20,3 +20,5 @@ query{
       }
     }
 }`
+
+module.exports = { allTrips }
