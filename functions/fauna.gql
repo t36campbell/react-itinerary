@@ -3,7 +3,7 @@ type Event {
     at: String
     description: String
     url: String
-    trip: Trip!
+    trip: Trip! @relation
 }
 type Trip {
     name: String!
@@ -12,10 +12,20 @@ type Trip {
 }
 type User {
     name: String!
+    email: String!
     trips: [Trip!] @relation
 }
+type Token @embedded {
+    instance: ID
+    secret: String
+}
 type Query {
-    allUsers: [User!]!
-    allTrips: [Trip!]!
-    allEvents: [Event!]!
+    createUser(
+        name: String!, 
+        email: String!, 
+        password: String!): User! @resolver(name: "create_user")
+    getUser( id: ID! ): User!  @resolver(name: "get_user")
+    loginUser(
+        email: String!, 
+        password: String!): Token! @resolver(name: "login_user")
 }

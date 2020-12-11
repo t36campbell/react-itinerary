@@ -1,9 +1,11 @@
-const Users = `
-query {
-  allUsers {
-    data {
+const getUser = `
+query($id: ID!) {
+	getUser(
+        id: $id,
+    ) {
       _id
       name
+      email
       trips {
         data {
           _id
@@ -18,8 +20,8 @@ query {
           }
         }
       }
-    }
-  }
-}`
+	}
+}
+`
 
-module.exports = { Users }
+module.exports = { getUser }

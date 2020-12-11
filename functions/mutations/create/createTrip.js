@@ -1,7 +1,7 @@
 const createTrip = `
 mutation($name: String!, $user: ID!) {
 	createTrip( data: { name: $name
-        user : {
+        user: {
             connect: $user
         }
     }) {

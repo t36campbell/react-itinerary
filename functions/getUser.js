@@ -1,11 +1,16 @@
-const { Users } = require('./queries/allUsers');
+const { getUser } = require('./queries/getUser');
 const sendRequest = require('./utils/sendRequest');
 const formattedResponse = require('./utils/formattedResponse');
 exports.handler = async (event) => {
+    const { _id: id } = JSON.parse(event.body);
+    const variables = { id };
     try {
-        const res = await sendRequest(Users);
-        const data = res.allUsers.data;
-        return formattedResponse(200, data);
+        const { getUser: gotUser } = await sendRequest(
+            getUser,
+            variables
+        );
+
+        return formattedResponse(200, gotUser);
     } catch (err) {
         console.error(err);
         return formattedResponse(500, { err: 'Something went wrong' });
