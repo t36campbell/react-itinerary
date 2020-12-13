@@ -30,7 +30,7 @@ const TopBar = ({
   ...rest
 }) => {
   const classes = useStyles();
-  const [notifications] = useState([]);
+  const [notifications] = useState([0,1,2]);
 
   return (
     <AppBar
@@ -47,7 +47,7 @@ const TopBar = ({
           <IconButton color="inherit">
             <Badge
               badgeContent={notifications.length}
-              color="primary"
+              color="error"
               variant="dot"
             >
               <NotificationsIcon />
