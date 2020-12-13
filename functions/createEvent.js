@@ -2,8 +2,8 @@ const { createEvent } = require('./mutations/create/createEvent');
 const sendRequest = require('./utils/sendRequest');
 const formattedResponse = require('./utils/formattedResponse');
 exports.handler = async (event) => {
-    const { name, at, description, url, trip } = JSON.parse(event.body);
-    const variables = { name, at, description, url, trip };
+    const { name, at, description, url, trip, user } = JSON.parse(event.body);
+    const variables = { name, at, description, url, trip, user };
     try {
         const { createEvent: createdEvent } = await sendRequest(
             createEvent,

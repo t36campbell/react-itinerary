@@ -4,16 +4,18 @@ type Event {
     description: String
     url: String
     trip: Trip! @relation
+    user: User! @relation
 }
 type Trip {
     name: String!
-    events: [Event!] @relation
-    user: User @relation
+    events: [Event] @relation
+    user: User! @relation
 }
 type User {
     name: String!
     email: String!
-    trips: [Trip!] @relation
+    events: [Event] @relation
+    trips: [Trip] @relation
 }
 type Token @embedded {
     instance: ID

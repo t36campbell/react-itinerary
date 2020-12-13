@@ -78,14 +78,14 @@ const NavBar = ({ onMobileClose, openMobile, trips, user }) => {
       <Divider />
       <Box p={2}>
         <List>
-          {trips.map(trip => (
+          { trips ? trips.map(trip => (
             <NavItem
               href='/app/dashboard'
               key={trip._id}
               title={trip.name}
               icon={HomeIcon}
             />
-          ))}
+          )) : null }
         </List>
       </Box>
       <Box flexGrow={1} />

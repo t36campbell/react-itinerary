@@ -2,7 +2,12 @@ import React from 'react';
 import {
   Container,
   Grid,
-  makeStyles
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Typography,
+  makeStyles,
 } from '@material-ui/core';
 import Page from 'src/components/Page';
 
@@ -12,10 +17,21 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '100%',
     paddingBottom: theme.spacing(3),
     paddingTop: theme.spacing(3)
-  }
+  },
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)',
+  },
+  title: {
+    fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
+  },
 }));
 
-const Dashboard = () => {
+const Dashboard = ({events}) => {
   const classes = useStyles();
 
   return (
@@ -28,15 +44,34 @@ const Dashboard = () => {
           container
           spacing={3}
         >
-          {/* <Grid
-            item
-            lg={8}
-            md={12}
-            xl={9}
-            xs={12}
-          >
-           
-          </Grid> */}
+          { events ? events.map(event => (
+            <Grid
+              item
+              container
+              key={event._id}
+              lg={2}
+            >
+              <Card>
+                <CardContent>
+                  <Typography className={classes.title} color="textSecondary" gutterBottom>
+                    {event.at}
+                  </Typography>
+                  <Typography variant="h5" component="h2">
+                    {event.name}
+                  </Typography>
+                  <Typography className={classes.pos} color="textSecondary">
+                    {event.url}
+                  </Typography>
+                  <Typography variant="body2" component="p">
+                    {event.description}
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  
+                </CardActions>
+              </Card>
+            </Grid>
+          )) : null }
         </Grid>
       </Container>
     </Page>

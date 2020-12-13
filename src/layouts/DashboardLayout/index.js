@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core';
+import DashboardView from '../../views/dashboard/DashboardView';
 import NavBar from './NavBar';
 import TopBar from './TopBar';
 import API from '../../utils/api';
@@ -39,14 +40,15 @@ const DashboardLayout = () => {
   const [isMobileNavOpen, setMobileNavOpen] = useState(false);
   const [user, setUser] = useState();
   const [trips, setTrips] = useState();
+  const [events, setEvents] = useState();
 
   useEffect(() => {
     API.post(`getUser`, {
         _id: '284633851133690372'
     }).then(res => {
         setUser(res.data);
-        setTrips(res.data.trips.data)
-        console.log("trips", res.data.trips.data);
+        setTrips(res.data.trips.data);
+        setEvents(res.data.events.data);
       });
   }, []);
 
@@ -62,7 +64,7 @@ const DashboardLayout = () => {
       <div className={classes.wrapper}>
         <div className={classes.contentContainer}>
           <div className={classes.content}>
-            <Outlet />
+          <DashboardView events={events} />
           </div>
         </div>
       </div>

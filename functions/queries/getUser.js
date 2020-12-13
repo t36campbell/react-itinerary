@@ -10,13 +10,17 @@ query($id: ID!) {
         data {
           _id
           name
-          events {
-            data {
+        }
+      }
+      events {
+        data {
+          _id
+          name
+          description
+          url
+          trip {
               _id
               name
-              description
-              url
-            }
           }
         }
       }
