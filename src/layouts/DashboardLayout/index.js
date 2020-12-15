@@ -42,20 +42,26 @@ const DashboardLayout = () => {
   const [trips, setTrips] = useState();
   const [events, setEvents] = useState();
 
-  useEffect(() => {
+  const getUser = () => {
     API.post(`getUser`, {
         _id: '284633851133690372'
-    }).then(res => {
+      }).then(res => {
         setUser(res.data);
         setTrips(res.data.trips.data);
         setEvents(res.data.events.data);
-      });
+    });
+  }
+
+
+  useEffect(() => {
+    getUser();
   }, []);
 
   return (
     <div className={classes.root}>
       <TopBar onMobileNavOpen={() => setMobileNavOpen(true)} />
       <NavBar
+        setTrips={setTrips}
         onMobileClose={() => setMobileNavOpen(false)}
         openMobile={isMobileNavOpen}
         trips={trips}
@@ -64,7 +70,10 @@ const DashboardLayout = () => {
       <div className={classes.wrapper}>
         <div className={classes.contentContainer}>
           <div className={classes.content}>
-          <DashboardView events={events} />
+          <DashboardView 
+            setEvents={setEvents}
+            events={events}
+          />
           </div>
         </div>
       </div>

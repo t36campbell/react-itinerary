@@ -9,19 +9,25 @@ import {
   Hidden,
   IconButton,
   Toolbar,
+  Typography,
   makeStyles
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
 import InputIcon from '@material-ui/icons/Input';
-import Logo from 'src/components/Logo';
+import ExploreOutlinedIcon from '@material-ui/icons/ExploreOutlined';
 
 const useStyles = makeStyles(() => ({
   root: {},
   avatar: {
     width: 60,
     height: 60
-  }
+  },
+  title: {
+    fontSize: 18,
+    fontWeight:900,
+    marginTop: 6
+  },
 }));
 
 const TopBar = ({
@@ -40,7 +46,12 @@ const TopBar = ({
     >
       <Toolbar>
         <RouterLink to="/">
-          <Logo />
+          <IconButton color="secondary">
+              <ExploreOutlinedIcon color="secondary"/>
+              <Typography className={classes.title} color="secondary" gutterBottom>
+                    TRVLR
+              </Typography>
+          </IconButton>
         </RouterLink>
         <Box flexGrow={1} />
         <Hidden mdDown>
