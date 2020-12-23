@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export default axios.create({
-  baseURL: `http://localhost:8888/.netlify/functions/`
+  baseURL: `https://react-itinerary.netlify.app/.netlify/functions/`
 });
